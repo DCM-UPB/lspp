@@ -1,0 +1,4 @@
+CCINC := $(CCINC) -I ../../toolbox/src
+LDOPTS := $(LDOPTS) ../../toolbox/src/libtoolbox.a  
+CCOPTS := $(CCOPTS) -DTB_MPI -DBENCHMARK -g
+#CCOPTS := $(CCOPTS) -DBENCHMARK #-g

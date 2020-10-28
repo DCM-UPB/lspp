@@ -1,0 +1,38 @@
+options {
+# list of beta/mu for normalized charge
+    beta 100
+    mu -0.9637
+    p 350000
+    flags { fastpoly niextrapolation niwarmstart keepinverse }
+    restart false
+    q_bar 1
+    ham_min -2.1
+    ham_max  -0.6
+    accuracy 1e-5
+#   bounds [-2.07034548, -0.60756236], 512 occupied states (1024 electrons), gap (-1.181, -0.765), width: 0.416, centre: -0.973
+    ham_file h_spcrs
+    rho_file rho_full
+        matrix_options {
+                at_nodiag false
+                at_norm norm_inf
+                at_relative true
+                at_threshold    1.e-5
+         }
+}
+
+
+# possible flags : fastpoly, niextrapolation, niwarmstart, autoqbar, optk, autohamspec, niextra2, niextra3, autolength, keepinverse
+
+# autoqbar : calculates number of matrices to tackle with Newton-Schulz iteration
+# autohamspec : calculates smallest and biggenst eigenvalue of the Hamiltonian (boundaries of the spectrum)
+# keepinverse : keep inverse of N_q matrice as initial guess for N_{q+1}
+
+# q_bar : number of matrices that are tackeled with Newton-Schulz iteration (if flag autoqbar ist off)
+# ham_min, ham_max : estimation for smallest and biggest eigenvalue of the Hamiltonian (if autohamspec is off)
+# accuracy : accuracy of the computation (for example Chebyshev expansion or matrix exponential)
+
+# matrix options
+# at_nodiag : if it is set to true, we don't include the diagonal into the computation of the norms
+# at_norm : can be norm_one, norm_inf or norm_frob
+# at_relative : relative truncation of the matrices
+# at_threshold : cutoff for matrix elements

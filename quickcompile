@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#module purge
+#module load ompi/g/o
+# make -j4 CXX=mpicxx -C toolbox/src
+# make -j4 CXX=mpicxx -C ls++/src
+
+CXX=mpicxx
+CCOPTS='-O3 -DTB_MPI'
+
+# make -C toolbox/src clean
+# make -C ls++/src clean
+
+make -j4 CXX=$CXX CCOPTS="$CCOPTS" -C toolbox/src
+make -j4 CXX=$CXX CCOPTS="$CCOPTS" -C ls++/src
+
+
